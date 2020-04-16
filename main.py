@@ -29,6 +29,16 @@ def getData():
             data.append(row)
     return data
 
+def BruteForce(data):
+    meilleur_parametrage = (-50, -10)
+    meilleure_erreur = ErrorModel(-50,-10,data)
+    for m in np.linspace(-50, 50, (10**2)+1):
+        for b in np.linspace(-10, 10, (10**2)+1):
+            if(ErrorModel(m,b,data) < meilleure_erreur):
+                meilleur_parametrage = (m, b)
+                meilleure_erreur = ErrorModel(m,b,data)
+    return meilleur_parametrage
+
 #Définition du dataset
 dataset = getData()
 
