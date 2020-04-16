@@ -56,3 +56,24 @@ def dJdb(m,b, data):
     """
     n = len(data)
     return -(2/n) * sum(data[i][1] - (m * data[i][0] +b) for i in range(n))
+
+def GradientStep(curent_b, curent_m, data, learningRate):
+    """
+    Effectue une étape de la descente de gradient
+    """
+    b_gradient = dJdb(curent_m, curent_b, dataset)
+    m_gradient = dJdm(curent_m, curent_b, dataset)
+    
+    new_b = curent_b - (learningRate * b_gradient)
+    new_m = curent_m - (learningRate * m_gradient)
+    return (new_b, new_m)
+
+def GradientDescent(data, starting_b, starting_m, learningRate, numIterations):
+    """
+    Effectue la descente de gradient
+    """
+    b = starting_b
+    m = starting_m
+    for i in range(numIterations):
+        b,m = GradientStep(b,m, data, learningRate)
+    return (b,m)
