@@ -27,3 +27,6 @@ def getData():
             row = [float(item) for item in row] #On converti les valeurs en flotant (car elles sont au départ ou forme de chaine de carractères)
             data.append(row)
     return data
+
+#Définition du dataset
+dataset = getData()
