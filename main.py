@@ -41,3 +41,18 @@ def BruteForce(data):
                 meilleur_parametrage = (m, b)
                 meilleure_erreur = ErrorModel(m,b,data)
     return meilleur_parametrage
+
+
+def dJdm(m,b, data):
+    """
+    Renvoie la fonction m'|--> dJ/dm' évalué en m
+    """
+    n = len(data)
+    return -(2/n) * sum( data[i][0] * (data[i][1] - (m * data[i][0] +b)) for i in range(n))
+
+def dJdb(m,b, data):
+    """
+    Renvoie la fonction b'|--> dJ/db' évalué en b
+    """
+    n = len(data)
+    return -(2/n) * sum(data[i][1] - (m * data[i][0] +b) for i in range(n))
