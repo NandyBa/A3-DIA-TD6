@@ -29,6 +29,9 @@ def getData():
             data.append(row)
     return data
 
+#Définition du dataset
+dataset = getData()
+
 def BruteForce(data):
     meilleur_parametrage = (-50, -10)
     meilleure_erreur = ErrorModel(-50,-10,data)
@@ -38,6 +41,3 @@ def BruteForce(data):
                 meilleur_parametrage = (m, b)
                 meilleure_erreur = ErrorModel(m,b,data)
     return meilleur_parametrage
-
-#Définition du dataset
-dataset = getData()
