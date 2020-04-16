@@ -14,4 +14,16 @@ def ErrorModel(m,b,data):
     return (1/n) *sum(((m*data[i][0]+b) - data[i][1] for i in range(n))^2)
 
 
-
+def getData():
+    """
+    Fonction permettant de récupérer les données provenant du fichier csv
+    """
+    data = []
+    #On récupère les données dans le fichier
+    with open('IA_tp6_data.csv') as f:
+        for row in f:
+            row = row.replace("\n","") #on enlève les sauts de ligne
+            row = row.split(',') #On sépare les valeurs
+            row = [float(item) for item in row] #On converti les valeurs en flotant (car elles sont au départ ou forme de chaine de carractères)
+            data.append(row)
+    return data
